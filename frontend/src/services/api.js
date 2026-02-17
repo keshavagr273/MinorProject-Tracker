@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+// Debug: Log the API URL being used
+console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
+console.log('Using baseURL:', import.meta.env.VITE_API_URL || '/api');
+
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL || '/api',
 });
