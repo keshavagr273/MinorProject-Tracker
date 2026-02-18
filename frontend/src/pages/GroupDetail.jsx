@@ -148,10 +148,10 @@ const GroupDetail = () => {
                         <p className="text-gray-600 dark:text-gray-400">Overall Progress</p>
                     </div>
                     <span className={`px-4 py-2 text-sm font-semibold rounded-full ${group.progress < 40
-                            ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
-                            : group.progress < 70
-                                ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
-                                : 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                        ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
+                        : group.progress < 70
+                            ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+                            : 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
                         }`}>
                         {badge.text}
                     </span>
@@ -254,10 +254,10 @@ const GroupDetail = () => {
                                         className="flex items-start space-x-4 pb-4 border-b border-gray-200 dark:border-gray-700 last:border-0"
                                     >
                                         <div className={`p-2 rounded-lg ${update.progress < 40
-                                                ? 'bg-red-100 dark:bg-red-900/30'
-                                                : update.progress < 70
-                                                    ? 'bg-yellow-100 dark:bg-yellow-900/30'
-                                                    : 'bg-green-100 dark:bg-green-900/30'
+                                            ? 'bg-red-100 dark:bg-red-900/30'
+                                            : update.progress < 70
+                                                ? 'bg-yellow-100 dark:bg-yellow-900/30'
+                                                : 'bg-green-100 dark:bg-green-900/30'
                                             }`}>
                                             <FiCheckCircle className={
                                                 update.progress < 40
@@ -300,6 +300,9 @@ const GroupDetail = () => {
                                 <p className="font-semibold text-gray-900 dark:text-white mb-1">
                                     {group.student1Name}
                                 </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    Roll No: {group.rollNo1}
+                                </p>
                                 <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <FiPhone className="text-xs" />
                                     <a href={`tel:${group.mobile1}`} className="hover:text-primary-600 dark:hover:text-primary-400">
@@ -310,6 +313,9 @@ const GroupDetail = () => {
                             <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                                 <p className="font-semibold text-gray-900 dark:text-white mb-1">
                                     {group.student2Name}
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    Roll No: {group.rollNo2}
                                 </p>
                                 <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <FiPhone className="text-xs" />

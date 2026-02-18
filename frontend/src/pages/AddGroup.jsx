@@ -17,7 +17,9 @@ const AddGroup = () => {
         projectStack: '',
         projectIdea: '',
         student1Name: '',
+        rollNo1: '',
         student2Name: '',
+        rollNo2: '',
         mobile1: '',
         mobile2: ''
     });
@@ -68,6 +70,18 @@ const AddGroup = () => {
         // Student names validation
         if (!formData.student1Name.trim() || !formData.student2Name.trim()) {
             setError('Both student names are required');
+            return false;
+        }
+
+        // Roll number validation
+        const rollNoRegex = /^[0-9]{8}$/;
+        if (!rollNoRegex.test(formData.rollNo1)) {
+            setError('Roll Number 1 must be exactly 8 digits');
+            return false;
+        }
+
+        if (!rollNoRegex.test(formData.rollNo2)) {
+            setError('Roll Number 2 must be exactly 8 digits');
             return false;
         }
 
@@ -261,7 +275,7 @@ const AddGroup = () => {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                         Student 1 Details
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label className="label">
                                 Full Name <span className="text-red-500">*</span>
@@ -273,6 +287,21 @@ const AddGroup = () => {
                                 onChange={handleChange}
                                 className="input"
                                 placeholder="Enter student name"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label className="label">
+                                Roll Number <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                name="rollNo1"
+                                value={formData.rollNo1}
+                                onChange={handleChange}
+                                className="input"
+                                placeholder="8 digit roll number"
+                                maxLength="8"
                                 required
                             />
                         </div>
@@ -299,7 +328,7 @@ const AddGroup = () => {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                         Student 2 Details
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label className="label">
                                 Full Name <span className="text-red-500">*</span>
@@ -311,6 +340,21 @@ const AddGroup = () => {
                                 onChange={handleChange}
                                 className="input"
                                 placeholder="Enter student name"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label className="label">
+                                Roll Number <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                name="rollNo2"
+                                value={formData.rollNo2}
+                                onChange={handleChange}
+                                className="input"
+                                placeholder="8 digit roll number"
+                                maxLength="8"
                                 required
                             />
                         </div>

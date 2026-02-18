@@ -54,6 +54,8 @@ const TeacherDetail = () => {
             filtered = filtered.filter(group =>
                 group.student1Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 group.student2Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                group.rollNo1.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                group.rollNo2.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 group.projectStack.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 group.projectIdea.toLowerCase().includes(searchTerm.toLowerCase())
             );
@@ -131,7 +133,7 @@ const TeacherDetail = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Search by student, stack, or idea..."
+                            placeholder="Search by student, roll no, stack, or idea..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="input"
@@ -244,9 +246,11 @@ const TeacherDetail = () => {
                                             <td className="px-6 py-4">
                                                 <div className="text-sm text-gray-900 dark:text-white">
                                                     {group.student1Name}
+                                                    <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">({group.rollNo1})</span>
                                                 </div>
                                                 <div className="text-sm text-gray-900 dark:text-white">
                                                     {group.student2Name}
+                                                    <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">({group.rollNo2})</span>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4">
@@ -266,10 +270,10 @@ const TeacherDetail = () => {
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <span className={`px-3 py-1 text-xs font-medium rounded-full ${group.progress < 40
-                                                        ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
-                                                        : group.progress < 70
-                                                            ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
-                                                            : 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                                                    ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
+                                                    : group.progress < 70
+                                                        ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+                                                        : 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
                                                     }`}>
                                                     {badge.text}
                                                 </span>

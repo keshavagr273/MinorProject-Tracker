@@ -46,9 +46,19 @@ const groupSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    rollNo1: {
+        type: String,
+        required: true,
+        match: /^[0-9]{8}$/
+    },
     student2Name: {
         type: String,
         required: true
+    },
+    rollNo2: {
+        type: String,
+        required: true,
+        match: /^[0-9]{8}$/
     },
     mobile1: {
         type: String,

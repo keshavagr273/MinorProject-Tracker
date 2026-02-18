@@ -17,11 +17,13 @@ export const getGroups = async (req, res) => {
             query.branch = branch;
         }
 
-        // Search by student name
+        // Search by student name or roll number
         if (search) {
             query.$or = [
                 { student1Name: { $regex: search, $options: 'i' } },
-                { student2Name: { $regex: search, $options: 'i' } }
+                { student2Name: { $regex: search, $options: 'i' } },
+                { rollNo1: { $regex: search, $options: 'i' } },
+                { rollNo2: { $regex: search, $options: 'i' } }
             ];
         }
 
@@ -61,10 +63,17 @@ export const createGroup = async (req, res) => {
             projectStack,
             projectIdea,
             student1Name,
+            rollNo1,
             student2Name,
+            rollNo2,
             mobile1,
             mobile2
         } = req.body;
+
+        // Validate roll numbers
+        if (!/^[0-9]{8}$/.test(rollNo1) || !/^[0-9]{8}$/.test(rollNo2)) {
+            return res.status(400).json({ message: 'Roll numbers must be exactly 8 digits' });
+        }
 
         // Validate mobile numbers
         if (!/^[0-9]{10}$/.test(mobile1) || !/^[0-9]{10}$/.test(mobile2)) {
@@ -94,7 +103,9 @@ export const createGroup = async (req, res) => {
             projectStack,
             projectIdea,
             student1Name,
+            rollNo1,
             student2Name,
+            rollNo2,
             mobile1,
             mobile2,
             progress: 0,
